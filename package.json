@@ -1,11 +1,19 @@
 {
   "name": "nestjs-autoloader",
-  "version": "0.1.0",
-  "description": "A module autoloader for NestJS",
+  "version": "1.0.0",
+  "description": "Module autoloading for NestJS",
   "main": "dist/index.js",
   "repository": "github:LucaScorpion/nestjs-autoloader",
   "author": "Luca Scalzotto (https://github.com/LucaScorpion)",
   "license": "MIT",
+  "keywords": [
+    "nestjs",
+    "module",
+    "autoloader",
+    "scanloader",
+    "provider",
+    "controller"
+  ],
   "homepage": "https://github.com/LucaScorpion/nestjs-autoloader#readme",
   "bugs": {
     "url": "https://github.com/LucaScorpion/nestjs-autoloader/issues"
