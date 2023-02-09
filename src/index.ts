@@ -12,6 +12,7 @@ export function AutoloadModule(
   metadata: ModuleMetadata
 ): ClassDecorator {
   return (target) => {
+    logger.verbose(`Autoloading module: ${dirName}`);
     const loaded = loadFiles(dirName);
     const combinedMeta: ModuleMetadata = {
       ...metadata,
