@@ -1,11 +1,11 @@
-import { Logger, Module, ModuleMetadata, Provider, Type } from "@nestjs/common";
+import { Logger, Module, ModuleMetadata, Provider, Type } from '@nestjs/common';
 import {
   CONTROLLER_WATERMARK,
   INJECTABLE_WATERMARK,
-} from "@nestjs/common/constants";
-import fs from "fs";
+} from '@nestjs/common/constants';
+import fs from 'fs';
 
-const logger = new Logger("AutoloadModule");
+const logger = new Logger('AutoloadModule');
 
 export function AutoloadModule(
   dirName: string,
@@ -32,7 +32,7 @@ function loadFiles(dirName: string): LoadResult {
   const checkFiles = fs
     .readdirSync(dirName)
     .filter(
-      (f) => (f.endsWith(".js") || f.endsWith(".ts")) && !f.endsWith(".d.ts")
+      (f) => (f.endsWith('.js') || f.endsWith('.ts')) && !f.endsWith('.d.ts')
     )
     .map((f) => `${dirName}/${f}`);
 
@@ -49,7 +49,7 @@ function loadFiles(dirName: string): LoadResult {
     const reqVals = Object.values(require(file));
 
     for (const check of reqVals) {
-      if (typeof check === "function") {
+      if (typeof check === 'function') {
         const controller = checkController(check);
         if (controller) {
           result.controllers.push(controller);
