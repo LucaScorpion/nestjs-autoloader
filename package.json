@@ -3,10 +3,7 @@
   "version": "0.1.0",
   "description": "A module autoloader for NestJS",
   "main": "dist/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LucaScorpion/nestjs-autoloader.git"
-  },
+  "repository": "github:LucaScorpion/nestjs-autoloader",
   "author": "Luca Scalzotto (https://github.com/LucaScorpion)",
   "license": "MIT",
   "homepage": "https://github.com/LucaScorpion/nestjs-autoloader#readme",
