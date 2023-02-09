@@ -11,6 +11,7 @@
     "url": "https://github.com/LucaScorpion/nestjs-autoloader/issues"
   },
   "scripts": {
+    "prepack": "npm run build",
     "build": "tsc",
     "lint": "eslint \"src/**/*.ts\" --max-warnings 0",
     "format": "npm run lint -- --fix"

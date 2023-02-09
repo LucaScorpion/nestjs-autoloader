@@ -9,15 +9,15 @@ const logger = new Logger("AutoloadModule");
 
 export function AutoloadModule(
   dirName: string,
-  metadata: ModuleMetadata
+  metadata?: ModuleMetadata
 ): ClassDecorator {
   return (target) => {
     logger.verbose(`Autoloading module: ${dirName}`);
     const loaded = loadFiles(dirName);
     const combinedMeta: ModuleMetadata = {
       ...metadata,
-      controllers: combine(metadata.controllers, loaded.controllers),
-      providers: combine(metadata.providers, loaded.providers),
+      controllers: combine(metadata?.controllers, loaded.controllers),
+      providers: combine(metadata?.providers, loaded.providers),
     };
     Module(combinedMeta)(target);
   };
