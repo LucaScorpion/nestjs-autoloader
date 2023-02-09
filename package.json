@@ -1,0 +1,35 @@
+{
+  "name": "nestjs-autoloader",
+  "version": "0.1.0",
+  "description": "A module autoloader for NestJS",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucaScorpion/nestjs-autoloader.git"
+  },
+  "author": "Luca Scalzotto (https://github.com/LucaScorpion)",
+  "license": "MIT",
+  "homepage": "https://github.com/LucaScorpion/nestjs-autoloader#readme",
+  "bugs": {
+    "url": "https://github.com/LucaScorpion/nestjs-autoloader/issues"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint \"src/**/*.ts\" --max-warnings 0",
+    "format": "npm run lint -- --fix"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^9"
+  },
+  "devDependencies": {
+    "@nestjs/common": "^9.3.7",
+    "@types/node": "^18.13.0",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.4",
+    "typescript": "^4.9.5"
+  }
+}
