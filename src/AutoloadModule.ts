@@ -46,14 +46,14 @@ function loadScripts(dirName: string): LoadResult {
 
     for (const check of reqVals) {
       if (typeof check === 'function') {
-        const controller = checkController(check);
-        if (controller) {
-          result.controllers.push(controller);
+        if (isController(check)) {
+          logger.verbose(`Found controller: ${check.name}`);
+          result.controllers.push(check);
         }
 
-        const provider = checkProvider(check);
-        if (provider) {
-          result.providers.push(provider);
+        if (isProvider(check)) {
+          logger.verbose(`Found provider: ${check.name}`);
+          result.providers.push(check);
         }
       }
     }
@@ -76,20 +76,15 @@ function isScript(name: string): boolean {
   );
 }
 
-// For both of these functions, we specifically want to use the Function type because it accepts any function-like.
+// For both of these functions,
+// we specifically want to use the Object type because it accepts almost anything.
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-function checkController(fn: Function): Type | undefined {
-  if (Reflect.hasMetadata(CONTROLLER_WATERMARK, fn)) {
-    logger.verbose(`Found controller: ${fn.name}`);
-    return fn as Type;
-  }
+function isController(fn: Object): fn is Type {
+  return Reflect.hasMetadata(CONTROLLER_WATERMARK, fn);
 }
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-function checkProvider(fn: Function): Provider | undefined {
-  if (Reflect.hasMetadata(INJECTABLE_WATERMARK, fn)) {
-    logger.verbose(`Found provider: ${fn.name}`);
-    return fn as Provider;
-  }
+function isProvider(fn: Object): fn is Provider {
+  return Reflect.hasMetadata(INJECTABLE_WATERMARK, fn);
 }

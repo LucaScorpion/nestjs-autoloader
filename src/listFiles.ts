@@ -32,7 +32,7 @@ function listFilesRecursive(dirName: string, isRootModule: boolean): string[] {
     }
   });
 
-  // If this directory is a submodule, want to ignore it from autoloading.
+  // If this directory is a submodule, we want to ignore it from autoloading.
   if (isSubModuleDir) {
     return [];
   }
