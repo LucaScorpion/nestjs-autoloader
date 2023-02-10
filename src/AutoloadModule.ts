@@ -30,9 +30,7 @@ interface LoadResult {
 }
 
 function loadScripts(dirName: string): LoadResult {
-  const scripts = listFiles(dirName).filter(
-    (f) => (f.endsWith('.js') || f.endsWith('.ts')) && !f.endsWith('.d.ts')
-  );
+  const scripts = listFiles(dirName).filter(isScript);
 
   const result: LoadResult = {
     controllers: [],
@@ -62,6 +60,20 @@ function loadScripts(dirName: string): LoadResult {
   }
 
   return result;
+}
+
+function isScript(name: string): boolean {
+  return (
+    // Include js and ts files.
+    (name.endsWith('.js') || name.endsWith('.ts')) &&
+    // Exclude type mappings.
+    !name.endsWith('.d.ts') &&
+    // Exclude test-related files.
+    !name.endsWith('.test.ts') &&
+    !name.endsWith('.spec.ts') &&
+    !name.endsWith('.test.js') &&
+    !name.endsWith('.spec.js')
+  );
 }
 
 // For both of these functions, we specifically want to use the Function type because it accepts any function-like.
