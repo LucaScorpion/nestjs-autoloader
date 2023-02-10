@@ -1,6 +1,8 @@
 import { AutoloadModule } from '../src';
 import { TestController } from './test.controller';
 import { TestProvider } from './test.provider';
+import { SubdirController } from './subdir/subdir.controller';
+import { SubdirProvider } from './subdir/subdir.provider';
 
 describe('AutoloadModule', () => {
   it('loads controllers and providers', () => {
@@ -11,9 +13,9 @@ describe('AutoloadModule', () => {
     // The `@Module` decorator set each passed object property as a metadata property.
 
     const controllers = Reflect.getOwnMetadata('controllers', TestModule);
-    expect(controllers).toStrictEqual([TestController]);
+    expect(controllers).toStrictEqual([TestController, SubdirController]);
 
     const providers = Reflect.getOwnMetadata('providers', TestModule);
-    expect(providers).toStrictEqual([TestProvider]);
+    expect(providers).toStrictEqual([TestProvider, SubdirProvider]);
   });
 });
