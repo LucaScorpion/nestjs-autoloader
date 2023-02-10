@@ -20,7 +20,7 @@
   },
   "scripts": {
     "prepack": "npm run build",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "lint": "eslint \"src/**/*.ts\" \"test/**/*.ts\" --max-warnings 0",
     "format": "npm run lint -- --fix",
     "test": "jest"
