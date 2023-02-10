@@ -1,12 +1,13 @@
 import { AutoloadModule } from '../src';
-import { TestController } from './test.controller';
-import { TestProvider } from './test.provider';
-import { SubdirController } from './subdir/subdir.controller';
-import { SubdirProvider } from './subdir/subdir.provider';
+import { TestController } from './module/test.controller';
+import { TestProvider } from './module/test.provider';
+import { SubdirController } from './module/subdir/subdir.controller';
+import { SubdirProvider } from './module/subdir/subdir.provider';
+import path from 'path';
 
 describe('AutoloadModule', () => {
   it('loads controllers and providers', () => {
-    @AutoloadModule(__dirname)
+    @AutoloadModule(path.join(__dirname, 'module'))
     class TestModule {}
 
     // The way to check if items are properly loaded, is to check the class metadata.
