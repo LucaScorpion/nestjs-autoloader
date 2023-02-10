@@ -45,9 +45,9 @@ Before:
 import { Module } from '@nestjs/common';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Admin])],
   controllers: [AuthController],
   providers: [AuthService, AdminGuard, UserMiddleware, AdminService],
+  imports: [TypeOrmModule.forFeature([Admin])],
   exports: [AuthService],
 })
 export class AuthModule {}
