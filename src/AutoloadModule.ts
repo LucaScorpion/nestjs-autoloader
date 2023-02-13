@@ -5,6 +5,7 @@ import {
 } from '@nestjs/common/constants';
 import { combine } from './combine';
 import { listFiles } from './listFiles';
+import { isScript } from './isScript';
 
 const logger = new Logger('AutoloadModule');
 
@@ -60,20 +61,6 @@ function loadScripts(dirName: string): LoadResult {
   }
 
   return result;
-}
-
-function isScript(name: string): boolean {
-  return (
-    // Include js and ts files.
-    (name.endsWith('.js') || name.endsWith('.ts')) &&
-    // Exclude type mappings.
-    !name.endsWith('.d.ts') &&
-    // Exclude test-related files.
-    !name.endsWith('.test.ts') &&
-    !name.endsWith('.spec.ts') &&
-    !name.endsWith('.test.js') &&
-    !name.endsWith('.spec.js')
-  );
 }
 
 // For both of these functions,
