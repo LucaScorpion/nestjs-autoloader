@@ -45,9 +45,9 @@ Before:
 import { Module } from '@nestjs/common';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Admin])],
   controllers: [AuthController],
   providers: [AuthService, AdminGuard, UserMiddleware, AdminService],
+  imports: [TypeOrmModule.forFeature([Admin])],
   exports: [AuthService],
 })
 export class AuthModule {}
@@ -64,3 +64,23 @@ import { AutoloadModule } from 'nestjs-autoloader';
 })
 export class AuthModule {}
 ```
+
+## Nested Module Directories
+
+The autoloader is designed to work with nested module directories.
+For example:
+
+```
+parent/
+├── parent.module.ts
+├── parent.service.ts
+└── sub/
+    ├── sub.module.ts
+    └── sub.service.ts
+```
+
+This will load the `parent.service.ts` for the `parent` module,
+but not the `sub.service.ts`.
+The autoloader recognises nested modules by looking at `*.module.ts` files.
+If a directory contains a file with that name,
+it will exclude this directory from autoloading for the containing module.
