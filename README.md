@@ -46,7 +46,7 @@ import { Module } from '@nestjs/common';
 
 @Module({
   controllers: [AuthController],
-  providers: [AuthService, AdminGuard, UserMiddleware, AdminService],
+  providers: [AuthService, AdminService],
   imports: [TypeOrmModule.forFeature([Admin])],
   exports: [AuthService],
 })
