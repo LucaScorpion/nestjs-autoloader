@@ -12,6 +12,10 @@ Simplify your NestJS modules by automatically loading providers and controllers.
 npm i nestjs-autoloader
 ```
 
+## Nest Compatibility
+
+NestJS Autoloader works with Nest `v9`, and `v8.2.4` and up.
+
 # Usage
 
 ```typescript
