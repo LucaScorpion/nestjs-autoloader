@@ -1,8 +1,9 @@
 # NestJS Autoloader
 
 [![Build](https://github.com/LucaScorpion/nestjs-autoloader/actions/workflows/build.yml/badge.svg)](https://github.com/LucaScorpion/nestjs-autoloader/actions/workflows/build.yml)
-[![NPM version](https://img.shields.io/npm/v/nestjs-autoloader)](https://www.npmjs.com/package/nestjs-autoloader)
 [![NPM bundle size](https://img.shields.io/bundlephobia/min/nestjs-autoloader)](https://www.npmjs.com/package/nestjs-autoloader)
+
+[![npm](https://npmbadge.com/npm/nestjs-autoloader)](https://www.npmjs.com/package/nestjs-autoloader)
 
 Simplify your NestJS modules by automatically loading providers and controllers.
 
