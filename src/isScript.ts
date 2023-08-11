@@ -1,3 +1,5 @@
+const testInfixes = ['test', 'spec', 'e2e-test', 'e2e-spec'];
+
 export function isScript(name: string): boolean {
   return (
     // Include js and ts files.
@@ -5,9 +7,8 @@ export function isScript(name: string): boolean {
     // Exclude type mappings.
     !name.endsWith('.d.ts') &&
     // Exclude test-related files.
-    !name.endsWith('.test.ts') &&
-    !name.endsWith('.spec.ts') &&
-    !name.endsWith('.test.js') &&
-    !name.endsWith('.spec.js')
+    !testInfixes.find(
+      (infix) => name.endsWith(`.${infix}.ts`) || name.endsWith(`.${infix}.js`)
+    )
   );
 }
