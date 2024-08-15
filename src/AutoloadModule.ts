@@ -14,7 +14,7 @@ export function AutoloadModule(
   metadata?: ModuleMetadata
 ): ClassDecorator {
   return (target) => {
-    logger.verbose(`Autoloading module: ${dirName}`);
+    log(`Autoloading module: ${dirName}`);
     const loaded = loadScripts(dirName);
     const combinedMeta: ModuleMetadata = {
       ...metadata,
@@ -39,7 +39,7 @@ function loadScripts(dirName: string): LoadResult {
   };
 
   for (const script of scripts) {
-    logger.verbose(`Autoloading file: ${script}`);
+    log(`Autoloading file: ${script}`);
 
     // Here we have to use require, to get the exports into a variable.
     // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -48,12 +48,12 @@ function loadScripts(dirName: string): LoadResult {
     for (const check of reqVals) {
       if (typeof check === 'function') {
         if (isController(check)) {
-          logger.verbose(`Found controller: ${check.name}`);
+          log(`Found controller: ${check.name}`);
           result.controllers.push(check);
         }
 
         if (isProvider(check)) {
-          logger.verbose(`Found provider: ${check.name}`);
+          log(`Found provider: ${check.name}`);
           result.providers.push(check);
         }
       }
@@ -61,6 +61,12 @@ function loadScripts(dirName: string): LoadResult {
   }
 
   return result;
+}
+
+function log(message: string): void {
+  if (Logger.isLevelEnabled('verbose')) {
+    logger.verbose(message);
+  }
 }
 
 // For both of these functions,
