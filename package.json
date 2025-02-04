@@ -21,9 +21,13 @@
   "scripts": {
     "prepack": "npm run build",
     "build": "tsc -p tsconfig.build.json",
-    "lint": "eslint \"src/**/*.ts\" \"test/**/*.ts\" --max-warnings 0",
-    "format": "npm run lint -- --fix",
-    "test": "jest"
+    "test": "jest",
+    "lint": "npm run eslint && npm run prettier",
+    "format": "npm run eslint:fix && npm run prettier:write",
+    "prettier": "prettier \"src/**/*.ts\" \"test/**/*.ts\" --check",
+    "prettier:write": "npm run prettier -- --write",
+    "eslint": "eslint \"src/**/*.ts\" \"test/**/*.ts\" --max-warnings 0",
+    "eslint:fix": "npm run eslint -- --fix"
   },
   "peerDependencies": {
     "@nestjs/common": "^8.2.4 || ^9 || ^10 || ^11"
@@ -34,9 +38,10 @@
     "@nestjs/common": "^11.0.7",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.1",
-    "@typescript-eslint/eslint-plugin": "^8.22.0",
-    "@typescript-eslint/parser": "^8.22.0",
+    "@typescript-eslint/eslint-plugin": "^8.23.0",
+    "@typescript-eslint/parser": "^8.23.0",
     "eslint": "^9.19.0",
+    "globals": "^15.14.0",
     "jest": "^29.7.0",
     "prettier": "^3.4.2",
     "ts-jest": "^29.2.5",
