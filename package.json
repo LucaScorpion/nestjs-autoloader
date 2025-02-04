@@ -63,5 +63,8 @@
     ],
     "coverageDirectory": "coverage",
     "testEnvironment": "node"
+  },
+  "publishConfig": {
+    "provenance": true
   }
 }
