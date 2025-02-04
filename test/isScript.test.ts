@@ -16,7 +16,10 @@ describe('isScript', () => {
     ${'file.e2e-test.js'} | ${false}
     ${'file.e2e-spec.ts'} | ${false}
     ${'file.e2e-spec.js'} | ${false}
-  `('returns $result when given $extension', ({ extension, result }) => {
-    expect(isScript(extension)).toBe(result);
-  });
+  `(
+    'returns $result when given $extension',
+    ({ extension, result }: { extension: string; result: boolean }) => {
+      expect(isScript(extension)).toBe(result);
+    },
+  );
 });
