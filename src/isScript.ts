@@ -8,7 +8,7 @@ export function isScript(name: string): boolean {
     !name.endsWith('.d.ts') &&
     // Exclude test-related files.
     !testInfixes.find(
-      (infix) => name.endsWith(`.${infix}.ts`) || name.endsWith(`.${infix}.js`)
+      (infix) => name.endsWith(`.${infix}.ts`) || name.endsWith(`.${infix}.js`),
     )
   );
 }

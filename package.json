@@ -24,9 +24,9 @@
     "test": "jest",
     "lint": "npm run eslint && npm run prettier",
     "format": "npm run eslint:fix && npm run prettier:write",
-    "prettier": "prettier \"src/**/*.ts\" \"test/**/*.ts\" --check",
+    "prettier": "prettier \"{src,test}/**/*.ts\" --check",
     "prettier:write": "npm run prettier -- --write",
-    "eslint": "eslint \"src/**/*.ts\" \"test/**/*.ts\" --max-warnings 0",
+    "eslint": "eslint \"{src,test}/**/*.ts\" --max-warnings 0",
     "eslint:fix": "npm run eslint -- --fix"
   },
   "peerDependencies": {

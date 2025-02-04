@@ -11,7 +11,7 @@ const logger = new Logger('AutoloadModule');
 
 export function AutoloadModule(
   dirName: string,
-  metadata?: ModuleMetadata
+  metadata?: ModuleMetadata,
 ): ClassDecorator {
   return (target) => {
     log(`Autoloading module: ${dirName}`);
