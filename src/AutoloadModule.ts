@@ -11,7 +11,7 @@ const logger = new Logger('AutoloadModule');
 
 export function AutoloadModule(
   dirName: string,
-  metadata?: ModuleMetadata
+  metadata?: ModuleMetadata,
 ): ClassDecorator {
   return (target) => {
     log(`Autoloading module: ${dirName}`);
@@ -42,8 +42,8 @@ function loadScripts(dirName: string): LoadResult {
     log(`Autoloading file: ${script}`);
 
     // Here we have to use require, to get the exports into a variable.
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const reqVals = Object.values(require(script));
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const reqVals: unknown[] = Object.values(require(script) as object);
 
     for (const check of reqVals) {
       if (typeof check === 'function') {
@@ -69,15 +69,10 @@ function log(message: string): void {
   }
 }
 
-// For both of these functions,
-// we specifically want to use the Object type because it accepts almost anything.
-
-// eslint-disable-next-line @typescript-eslint/ban-types
-function isController(fn: Object): fn is Type {
+function isController(fn: object): fn is Type {
   return Reflect.hasMetadata(CONTROLLER_WATERMARK, fn);
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-function isProvider(fn: Object): fn is Provider {
+function isProvider(fn: object): fn is Provider {
   return Reflect.hasMetadata(INJECTABLE_WATERMARK, fn);
 }

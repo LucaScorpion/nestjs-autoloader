@@ -16,10 +16,13 @@ describe('AutoloadModule', () => {
     @AutoloadModule(path.join(__dirname, 'module'))
     class TestModule {}
 
-    const controllers = Reflect.getOwnMetadata('controllers', TestModule);
+    const controllers: unknown = Reflect.getOwnMetadata(
+      'controllers',
+      TestModule,
+    );
     expect(controllers).toStrictEqual([TestController, SubdirController]);
 
-    const providers = Reflect.getOwnMetadata('providers', TestModule);
+    const providers: unknown = Reflect.getOwnMetadata('providers', TestModule);
     expect(providers).toStrictEqual([TestProvider, SubdirProvider]);
   });
 
@@ -27,7 +30,7 @@ describe('AutoloadModule', () => {
     @AutoloadModule(path.join(__dirname, 'module-with-submodule'))
     class TestModule {}
 
-    const providers = Reflect.getOwnMetadata('providers', TestModule);
+    const providers: unknown = Reflect.getOwnMetadata('providers', TestModule);
     expect(providers).toStrictEqual([IncludeProvider]);
   });
 });
